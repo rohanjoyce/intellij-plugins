@@ -35,7 +35,7 @@ import java.util.Objects;
 
 /** A persistent service that stores protobuf settings. */
 @State(name = "ProtobufLanguageSettings", storages = @Storage("protoeditor.xml"))
-public class PbProjectSettings implements PersistentStateComponent<PbProjectSettings.State> {
+public final class PbProjectSettings implements PersistentStateComponent<PbProjectSettings.State> {
 
   private State state;
 
@@ -122,7 +122,7 @@ public class PbProjectSettings implements PersistentStateComponent<PbProjectSett
     if (obj == null) {
       return false;
     }
-    if (!getClass().equals(obj.getClass())) {
+    if (!(obj instanceof PbProjectSettings)) {
       return false;
     }
     PbProjectSettings other = (PbProjectSettings) obj;
@@ -177,7 +177,7 @@ public class PbProjectSettings implements PersistentStateComponent<PbProjectSett
       if (obj == null) {
         return false;
       }
-      if (getClass() != obj.getClass()) {
+      if (!(obj instanceof ImportPathEntry)) {
         return false;
       }
 
